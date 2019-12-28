@@ -9,6 +9,7 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
 
+
 const instructions = '业务1设置了一个全局变量供业务2读取';
 
 type Props = {};

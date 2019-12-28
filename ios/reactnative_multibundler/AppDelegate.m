@@ -23,7 +23,7 @@
   BOOL isBuz3Loaded;
 }
 @end
-static const BOOL MULTI_DEBUG = NO;//如果画要调试，需设置成YES
+static const BOOL MULTI_DEBUG = false;//如果画要调试，需设置成YES
 
 @implementation AppDelegate
 
@@ -31,7 +31,7 @@ static const BOOL MULTI_DEBUG = NO;//如果画要调试，需设置成YES
 {
   NSURL *jsCodeLocation;
   if(MULTI_DEBUG){
-    jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"MultiDenugEntry" fallbackResource:nil];
+    jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index3" fallbackResource:nil];
   }else{
     jsCodeLocation = [[NSBundle mainBundle] URLForResource:@"platform.ios" withExtension:@"bundle"];
   }
@@ -66,6 +66,21 @@ static const BOOL MULTI_DEBUG = NO;//如果画要调试，需设置成YES
 }
 
 -(void)goBuz3:(UIButton *)button{
+  if (false) {
+       NSURL *jsCodeLocation = [[NSBundle mainBundle] URLForResource:@"index3.ios" withExtension:@"bundle"];
+      RCTBridge *bridge1 = [[RCTBridge alloc] initWithBundleURL:jsCodeLocation
+      moduleProvider:nil
+       launchOptions:nil];
+//      dispatch_time_t time=dispatch_time(DISPATCH_TIME_NOW, 5ull *NSEC_PER_SEC); //设置时间2秒
+//      dispatch_after(time, dispatch_get_main_queue(), ^{
+               RCTRootView* view = [[RCTRootView alloc] initWithBridge:bridge1 moduleName:@"reactnative_multibundler3" initialProperties:nil];
+                   UIViewController* controller = [UIViewController new];
+                   [controller setView:view];
+                   [mainViewController.navigationController pushViewController:controller animated:YES];
+//       });
+    return;
+  }
+  
   [self gotoBuzWithModuleName:@"reactnative_multibundler3" bundleName:@"index3.ios"];
   isBuz3Loaded = YES;
 }

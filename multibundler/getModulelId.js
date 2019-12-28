@@ -8,6 +8,8 @@ const fs=require("fs");
 var baseMappingPath;
 var buzMappingPath;
 
+
+
 /** 通过自增长的index来确定moduleID，优点是能使用rambundle且减小了bundle包的大小，隐藏了模块路径，提升安全性，缺点是需要保存和依赖已经打包进去的模块的路径和id的对应信息，需要注意打包顺序和重复依赖的打包模块*/
 function getModuleIdByIndex(projectRootPath,path,entry,isBuz){
 
@@ -18,6 +20,7 @@ function getModuleIdByIndex(projectRootPath,path,entry,isBuz){
   if(baseMappingPath==null) {
     baseMappingPath = __dirname + pathSep + "platformMap.json";
   }
+  // 如果是打基础包第一个文件并且基础包的配置文件baseMappingPath存在，则读取以前基础包的配置并且设置基础包下一个id
   if(baseModuleIdMap.length == 0){
     if(fs.existsSync(baseMappingPath)){
       baseModuleIdMap = require(baseMappingPath);
@@ -41,6 +44,7 @@ function getModuleIdByIndex(projectRootPath,path,entry,isBuz){
   if (path.indexOf(projectRootPath) == 0) {
     pathRelative = path.substr(projectRootPath.length + 1);
   }
+  // 如果是在当前基础包中已经打包了，则直接返回id
   const findPlatformItem = baseModuleIdMap.find((value)=>{return value.path==pathRelative});
   const findBuzItem = buzModuleIdMap.find((value)=>{return value.path==pathRelative});
   if(findPlatformItem){
@@ -49,8 +53,10 @@ function getModuleIdByIndex(projectRootPath,path,entry,isBuz){
     return findBuzItem.id;
   }else {
     if(!isBuz) {//基础包
+      // console.warn('pathRelative',pathRelative);
       curModuleId = ++curModuleId;
       baseModuleIdMap.push({id: curModuleId, path: pathRelative});
+      //把当前路径和id写入基础包id的map
       fs.writeFileSync(baseMappingPath, JSON.stringify(baseModuleIdMap));
       return curModuleId;
     }else{//业务包

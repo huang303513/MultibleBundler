@@ -10,5 +10,9 @@ node ./node_modules/react-native/local-cli/cli.js bundle --platform android --de
 node ./node_modules/react-native/local-cli/cli.js bundle --platform ios --dev false --entry-file platformDep.js --bundle-output ./ios/platform.ios.bundle --assets-dest ./ios/ --config /Users/huangchengdu/Desktop/github/react-native-multibundler/platform.config.js
 #打iOS业务包
 node ./node_modules/react-native/local-cli/cli.js bundle --platform ios --dev false --entry-file index.js --bundle-output ./ios/index.ios.bundle --assets-dest ./ios/ --config /Users/huangchengdu/Desktop/github/react-native-multibundler/buz.config.js
+node ./node_modules/react-native/local-cli/cli.js bundle --platform ios --dev false --entry-file index2.js --bundle-output ./ios/index2.ios.bundle --assets-dest ./ios/ --config /Users/huangchengdu/Desktop/github/react-native-multibundler/buz.config.js
+node ./node_modules/react-native/local-cli/cli.js bundle --platform ios --dev false --entry-file index3.js --bundle-output ./ios/index3.ios.bundle --assets-dest ./ios/ --config /Users/huangchengdu/Desktop/github/react-native-multibundler/buz.config.js
 
+
+node ./node_modules/react-native/local-cli/cli.js bundle --platform ios --dev false --entry-file index3.js --bundle-output ./ios/index3.ios.bundle --assets-dest ./ios/
 

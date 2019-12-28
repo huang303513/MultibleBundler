@@ -16,7 +16,7 @@ export class App3_1 extends Component<Props> {
   render() {
     return (
       <View style={styles.container}>
-        <TouchableOpacity onPress={()=>this.props.navigation.push('App3_2')} >
+        <TouchableOpacity onPress={()=> this.props.navigation.push('App3_2')} >
           <Text style={[styles.navBtn]}>导航到js页面2</Text>
         </TouchableOpacity>
         <Text style={styles.welcome}>欢迎来到业务3 页面1的世界！</Text>
