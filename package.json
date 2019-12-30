@@ -1,9 +1,12 @@
 {
   "name": "reactnative_multibundler",
   "version": "0.0.1",
-  "private": true,
+  "private": false,
+  "main": "dist/xxxx",
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
+    "mybuild": "tsc  --allowJs --module commonjs buz.config.js",
+    "mybuild2": "webpack --progress --hidden",
     "test": "jest"
   },
   "dependencies": {
@@ -22,10 +25,15 @@
     "@babel/runtime": "7.7.7",
     "@react-native-community/eslint-config": "0.0.5",
     "babel-jest": "24.9.0",
+    "del-cli": "^3.0.0",
     "eslint": "6.8.0",
     "jest": "24.9.0",
     "metro-react-native-babel-preset": "0.57.0",
-    "react-test-renderer": "16.12.0"
+    "pkg": "^4.4.2",
+    "react-test-renderer": "16.12.0",
+    "typescript": "^3.6.4",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
   },
   "jest": {
     "preset": "react-native"
