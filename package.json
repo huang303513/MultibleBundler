@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "mybuild": "tsc  --allowJs --module commonjs buz.config.js",
-    "mybuild2": "webpack --progress --hidden",
+    "mybuild2": "webpack --config webpack.config.js --progress --hidden",
     "test": "jest"
   },
   "dependencies": {
@@ -28,10 +28,13 @@
     "del-cli": "^3.0.0",
     "eslint": "6.8.0",
     "jest": "24.9.0",
+    "mangle-js-webpack-plugin": "^0.1.4",
     "metro-react-native-babel-preset": "0.57.0",
     "pkg": "^4.4.2",
     "react-test-renderer": "16.12.0",
+    "terser-webpack-plugin": "^2.3.1",
     "typescript": "^3.6.4",
+    "uglifyjs-webpack-plugin": "^2.2.0",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10"
   },
