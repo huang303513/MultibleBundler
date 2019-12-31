@@ -11,7 +11,7 @@ module.exports = {
     libraryTarget: "commonjs2",
     //是否包含有用的文件路径信息生成的代码里，为boolean类型
     // pathinfoL:true,
-    filename: "business.config.build.js",
+    filename: ".xrnconfig.build.js",
     // globalObject: "this",
     library: "MyLibrary"
   },
