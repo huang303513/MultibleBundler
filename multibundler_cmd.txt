@@ -14,5 +14,5 @@ node ./node_modules/react-native/local-cli/cli.js bundle --platform ios --dev fa
 node ./node_modules/react-native/local-cli/cli.js bundle --platform ios --dev false --entry-file index3.js --bundle-output ./webapp/index3.ios.bundle --assets-dest ./ios/ --config /Users/huangchengdu/Desktop/github/react-native-multibundler/buz.config.js
 
 
-node ./node_modules/react-native/local-cli/cli.js bundle --platform ios --dev false --entry-file index3.js --bundle-output ./ios/index3.ios.bundle --assets-dest ./ios/
+node ./node_modules/react-native/local-cli/cli.js bundle --platform ios --dev false --entry-file index.js --bundle-output ./webapp/XRNDemo.ios.bundle --assets-dest ./ios/
 
