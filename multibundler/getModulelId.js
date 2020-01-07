@@ -33,16 +33,16 @@ function getModuleIdByIndex(projectRootPath,path,entry,isBuz){
     curModuleId =  - 1;//基础包的Module都是从0开始的
   }
   if(baseMappingPath==null) {
-    baseMappingPath = projectRootPath + pathSep + "platformMap.json";
+    baseMappingPath = projectRootPath + pathSep + 'multibundler' + pathSep +"platformMap.json";
   }
   // 如果是打基础包第一个文件并且基础包的配置文件baseMappingPath存在，则读取以前基础包的配置并且设置基础包下一个id
   if(baseModuleIdMap.length == 0){
-    // if(fs.existsSync && fs.existsSync(baseMappingPath)){
-    //   baseModuleIdMap = require(baseMappingPath);
-    //   curModuleId = baseModuleIdMap[baseModuleIdMap.length-1].id;
-    // } else {
+    if(fs.existsSync && fs.existsSync(baseMappingPath)){
+      baseModuleIdMap = require(baseMappingPath);
+      curModuleId = baseModuleIdMap[baseModuleIdMap.length-1].id;
+    } else {
       baseModuleIdMap = plaformModules;
-    // }
+    }
   }
   if(isBuz){
         if (buzMappingPath == null) {
@@ -69,21 +69,21 @@ function getModuleIdByIndex(projectRootPath,path,entry,isBuz){
   if(findPlatformItem){
     return findPlatformItem.id;
   }else if(findBuzItem){
-    return findBuzItem.id;
+    return moduleIdPrefx + findBuzItem.id;
   }else {
     if(!isBuz) {//基础包
       // console.warn('pathRelative',pathRelative);
       curModuleId = ++curModuleId;
       baseModuleIdMap.push({id: curModuleId, path: pathRelative});
       //把当前路径和id写入基础包id的map
-      // fs.writeFileSync && fs.writeFileSync(baseMappingPath, JSON.stringify(baseModuleIdMap));
+      fs.writeFileSync && fs.writeFileSync(baseMappingPath, JSON.stringify(baseModuleIdMap));
       return curModuleId;
     }else{//业务包
       curBuzModuleId = ++curBuzModuleId;
       buzModuleIdMap.push({id: curBuzModuleId, path: pathRelative});
       // fs.writeFileSync && fs.writeFileSync(buzMappingPath, JSON.stringify(buzModuleIdMap));
-      // return moduleIdPrefx + curBuzModuleId;
-      return curBuzModuleId;
+      return moduleIdPrefx + curBuzModuleId;
+      // return curBuzModuleId;
     }
 
   }

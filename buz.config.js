@@ -4,6 +4,8 @@ const plaformModules = require('./multibundler/platformMapping.json');
 const getModuleId = require('./multibundler/getModulelId').getModuleId;
 let entry;
 
+
+
 function postProcessModulesFilter(module) {
   let projectRootPath = __dirname;
   // console.warn('module=====',JSON.stringify(module));
@@ -16,6 +18,9 @@ function postProcessModulesFilter(module) {
     return false;
   }
   const path1 = module['path']
+  if (path1.indexOf('.png') > 0) {
+    console.warn('path1==',path1);
+  }
   if (path1.indexOf("__prelude__") >= 0 ||
     path1.indexOf("/node_modules/react-native/Libraries/polyfills") >= 0 ||
     path1.indexOf("source-map") >= 0 ||
@@ -49,6 +54,18 @@ function getModulesRunBeforeMainModule(entryFilePath) {
 }
 
 module.exports = {
+  // transformer: {
+  //   getTransformOptions: async () => ({
+  //     transform: {
+  //       experimentalImportSupport: false,
+  //       inlineRequires: false,
+  //     },
+  //   }),
+  // },
+  // resolver: {
+  //   // assetExts: ['png'],
+  //   sourceExts: ['ts', 'js', 'json', 'png']
+  // },
   serializer: {
     createModuleIdFactory: createModuleIdFactory,
     processModuleFilter: postProcessModulesFilter,

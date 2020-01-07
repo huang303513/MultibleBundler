@@ -7,7 +7,10 @@
  */
 
 import React, {Component} from 'react';
-import {TouchableOpacity, Platform, StyleSheet, Text, View} from 'react-native';
+import {TouchableOpacity, Platform, StyleSheet, Text, View, Image} from 'react-native';
+import PackageUIImage from './images/test/package-ui-demo.png';
+
+const image2Url = 'https://s.shmiao.net/shm-tutorial/guides/search-coupon-guide-jd-04.png';
 
 const instructions = '业务3打包的时候依赖了react-navigation，这里展示业务包依赖第三方模块的例子';
 
@@ -17,8 +20,10 @@ export class App3_1 extends Component<Props> {
     return (
       <View style={styles.container}>
         <TouchableOpacity onPress={()=> this.props.navigation.push('App3_2')} >
-          <Text style={[styles.navBtn]}>加密测试</Text>
+          <Text style={[styles.navBtn]}>加密测试111</Text>
         </TouchableOpacity>
+        <Image style={styles.welcomeImage} source={PackageUIImage}></Image>
+        <Image style={styles.welcomeImage} source={{uri: image2Url}}></Image>
         <Text style={styles.welcome}>欢迎来到业务3 页面1的世界！</Text>
         <Text style={styles.instructions}>To get started, edit App31.js</Text>
         <Text style={styles.instructions}>{instructions}</Text>
@@ -50,6 +55,11 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     margin: 10,
+  },
+  welcomeImage: {
+    width: 30,
+    height: 30,
+    backgroundColor: 'green',
   },
   instructions: {
     textAlign: 'center',
