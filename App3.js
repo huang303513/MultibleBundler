@@ -20,7 +20,7 @@ export class App3_1 extends Component<Props> {
     return (
       <View style={styles.container}>
         <TouchableOpacity onPress={()=> this.props.navigation.push('App3_2')} >
-          <Text style={[styles.navBtn]}>加密测试111</Text>
+          <Text style={[styles.navBtn]}>1热更新研究-1699999</Text>
         </TouchableOpacity>
         <Image style={styles.welcomeImage} source={PackageUIImage}></Image>
         <Image style={styles.welcomeImage} source={{uri: image2Url}}></Image>

@@ -1,7 +1,7 @@
 PODS:
   - Base64 (1.1.2)
   - boost-for-react-native (1.63.0)
-  - CodePush (1000.0.0-1):
+  - CodePush (6.0.0-c):
     - Base64 (~> 1.1)
     - JWT (~> 3.0.0-beta.7)
     - React
@@ -237,7 +237,7 @@ PODS:
   - Yoga (1.14.0)
 
 DEPENDENCIES:
-  - CodePush (from `../node_modules/react-native-code-push-xrn`)
+  - CodePush (from `../node_modules/react-native-code-pushx`)
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
   - FBReactNativeSpec (from `../node_modules/react-native/Libraries/FBReactNativeSpec`)
@@ -280,7 +280,7 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   CodePush:
-    :path: "../node_modules/react-native-code-push-xrn"
+    :path: "../node_modules/react-native-code-pushx"
   DoubleConversion:
     :podspec: "../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec"
   FBLazyVector:
@@ -343,7 +343,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Base64: cecfb41a004124895a7bcee567a89bae5a89d49b
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
-  CodePush: 6b32bff8d998d49532c0814a56ea6efdae41c6c2
+  CodePush: fb29a3d970040abe8c544462dfa2d703bd6cc62e
   DoubleConversion: 5805e889d232975c086db112ece9ed034df7a0b2
   FBLazyVector: aaeaf388755e4f29cd74acbc9e3b8da6d807c37f
   FBReactNativeSpec: 118d0d177724c2d67f08a59136eb29ef5943ec75
@@ -376,6 +376,6 @@ SPEC CHECKSUMS:
   SSZipArchive: fa16b8cc4cdeceb698e5e5d9f67e9558532fbf23
   Yoga: f2a7cd4280bfe2cca5a7aed98ba0eb3d1310f18b
 
-PODFILE CHECKSUM: 537e75761c0a94119c5478f0fc6b54899be44139
+PODFILE CHECKSUM: d1d277b72d7f7c3cf9077010796b4f8b0f2ae117
 
 COCOAPODS: 1.8.4

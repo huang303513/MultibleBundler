@@ -2,7 +2,6 @@
   "name": "reactnative_multibundler",
   "version": "0.0.1",
   "private": false,
-  "main": "dist/xxxx",
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "mybuild": "tsc  --allowJs --module commonjs buz.config.js",
@@ -13,7 +12,7 @@
     "code-push-cli": "2.1.9",
     "react": "16.9.0",
     "react-native": "0.61.5",
-    "react-native-code-push-xrn": "1000.0.0-beta-1",
+    "react-native-code-pushx": "6.0.0-c",
     "react-native-fs": "2.16.2",
     "react-native-gesture-handler": "1.5.2",
     "react-native-reanimated": "1.4.0",

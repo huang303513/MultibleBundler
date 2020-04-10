@@ -12,8 +12,7 @@
 #import <React/RCTRootView.h>
 #import <React/RCTBridge+Private.h>
 #import "XRNBridge.h"
-
-static const BOOL MULTI_DEBUG = false;//如果画要调试，需设置成YES
+#import <CodePush/CodePush.h>
 
 @interface XRNBundleLoadManager ()<RCTBridgeDelegate>
 
@@ -43,13 +42,15 @@ static const BOOL MULTI_DEBUG = false;//如果画要调试，需设置成YES
     if (self) {
         self.loadedBundleDic = [NSMutableDictionary new];
          self.LoadBundleQueue = dispatch_queue_create("com.xrn.bundleload", DISPATCH_QUEUE_CONCURRENT);
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadBaseBundleFinish) name:@"RCTJavaScriptDidLoadNotification" object:nil];
+      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadBaseBundleFinish:) name:@"RCTJavaScriptDidLoadNotification" object:nil];
         self.lock = dispatch_semaphore_create(0);
     }
     return self;
 }
 
-- (void)loadBaseBundleFinish {
+- (void)loadBaseBundleFinish:(NSNotification *)note {
+    NSDictionary *dic = note.userInfo;
+  NSLog(@"======%@",dic);
     if (!self.hasBaseBundleLoad) {
         self.hasBaseBundleLoad = true;
         dispatch_semaphore_signal(self.lock);
@@ -63,7 +64,8 @@ static const BOOL MULTI_DEBUG = false;//如果画要调试，需设置成YES
 }
 
 - (void)loadBundle:(NSString *)path moduleName:(NSString *)moduleName callback:(BundleLoadBlock)callback{
-    if (![[self.loadedBundleDic valueForKey:moduleName] boolValue]) {
+    if (true || ![[self.loadedBundleDic valueForKey:moduleName] boolValue]) {
+      NSLog(@"====%@===%@",moduleName, path);
         dispatch_async(self.LoadBundleQueue, ^{
             if (!self.hasBaseBundleLoad) {
                 dispatch_semaphore_wait(self.lock, DISPATCH_TIME_FOREVER);
@@ -100,7 +102,7 @@ static const BOOL MULTI_DEBUG = false;//如果画要调试，需设置成YES
 
 - (NSURL *)sourceURLForBridge:(RCTBridge *)bridge {
     NSURL *baseSourceURL;
-     if(MULTI_DEBUG){
+     if(false){
        baseSourceURL = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
      }else{
        baseSourceURL = [[NSBundle mainBundle] URLForResource:@"platform.ios" withExtension:@"bundle"];

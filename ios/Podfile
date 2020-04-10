@@ -35,22 +35,7 @@ target 'reactnative_multibundler' do
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
   pod 'RNFS', :path => '../node_modules/react-native-fs'
-  pod 'CodePush', :path => '../node_modules/react-native-code-push-xrn'
-
-  target 'reactnative_multibundlerTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
+  pod 'CodePush', :path => '../node_modules/react-native-code-pushx'
 
   use_native_modules!
-end
-
-target 'reactnative_multibundler-tvOS' do
-  # Pods for HelloWorld-tvOS
-
-  target 'reactnative_multibundler-tvOSTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
 end

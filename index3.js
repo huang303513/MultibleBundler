@@ -7,6 +7,7 @@ import { gestureHandlerRootHOC } from 'react-native-gesture-handler';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import {App3_1,App3_2} from "./App3";
+import codePush from 'react-native-code-pushx';
 
 
 // import RNFS from 'react-native-fs';
@@ -56,4 +57,11 @@ const App3 = createStackNavigator({
 
 
 const xx = gestureHandlerRootHOC(createAppContainer(App3));
-AppRegistry.registerComponent("reactnative_multibundler3", () => xx);
+const codepush = codePush({
+  deploymentKey: 'Wn6tDq3e6NbyRt90GGrGcOohWWfD4ksvOXqog',
+  checkFrequency: codePush.CheckFrequency.ON_APP_RESUME,
+  installMode: codePush.InstallMode.ON_NEXT_RESUME,
+  updateDialog: true,
+})(xx);
+
+AppRegistry.registerComponent("reactnative_multibundler3", () => codepush);
